@@ -7,7 +7,7 @@ public class ShipmatePlayerScript : DefaultPlayerScript
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
