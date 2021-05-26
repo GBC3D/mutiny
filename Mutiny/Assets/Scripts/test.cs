@@ -9,6 +9,7 @@ public class test : MonoBehaviour
     {
 
         bool test = false;
+        bool isRed = true; //now this is epic B)
 
         //Test
         //This a test boi frfr
