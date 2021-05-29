@@ -10,6 +10,7 @@ public class test : MonoBehaviour
 
         bool test = false;
         bool isRed = true; //now this is epic B)
+        bool isPirate = true;
 
         //Test
         //This a test boi frfr
