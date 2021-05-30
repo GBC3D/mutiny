@@ -59,7 +59,10 @@ public class PlayerController : MonoBehaviour
         targetMovement.Normalize();
         targetMovement *= currentSpeed;
 
-        Vector3 targetVelocity = new Vector3(targetMovement.x, m_Rigidbody.velocity.y, targetMovement.y);
+        Vector3 forwardMovement = transform.forward * targetMovement.y;
+        Vector3 sideMovement = transform.right * targetMovement.x;
+
+        Vector3 targetVelocity = forwardMovement + sideMovement + new Vector3(0f, m_Rigidbody.velocity.y, 0f);
         m_Rigidbody.velocity = Vector3.SmoothDamp(m_Rigidbody.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
     }
 }
