@@ -42,7 +42,13 @@ public class PlayerController : MonoBehaviour
             m_PlayerSprinting = true;
         else
             m_PlayerSprinting = false;
+
+        //Respawn
+        if (Input.GetKey(KeyCode.R))
+            transform.position = new Vector3(10, 10, 0);
     }
+
+
 
     void FixedUpdate()
     {
