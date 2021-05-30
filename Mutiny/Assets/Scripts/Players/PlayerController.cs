@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         targetMovement.Normalize();
         targetMovement *= currentSpeed;
 
-        Vector3 forwardMovement = transform.forward * targetMovement.y;
+        Vector3 forwardMovement = transform.forward * targetMovement.y * -1;
         Vector3 sideMovement = transform.right * targetMovement.x * -1;
 
         Vector3 targetVelocity = forwardMovement + sideMovement + new Vector3(0f, m_Rigidbody.velocity.y, 0f);
