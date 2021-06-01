@@ -61,6 +61,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+  textElement: {fileID: 0}
+  textValue: Press 'E' to travel
 --- !u!136 &5150752794823813559
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -992,6 +994,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadingImage: {fileID: 0}
   player: {fileID: 0}
-  newX: -142.6
-  newY: 6.41082
+  newX: 0
+  newY: 0
   newZ: 0
