@@ -29,7 +29,7 @@ public class FadingScript : MonoBehaviour
     
     public void FadeOut()
     {
-        fadingImage.CrossFadeAlpha(2, 2f, false);
+        fadingImage.CrossFadeAlpha(0, 2f, false);
     }
 
     IEnumerator waiter()
@@ -37,6 +37,6 @@ public class FadingScript : MonoBehaviour
         FadeIn();
         yield return new WaitForSecondsRealtime(2);
         player.transform.position = new Vector3(newX, newY, newZ);
-        fadingImage.canvasRenderer.SetAlpha(0.0f);
+        FadeOut();
     }
 }
