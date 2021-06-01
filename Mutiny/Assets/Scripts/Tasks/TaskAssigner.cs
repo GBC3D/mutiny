@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaskAssigner : MonoBehaviour
 {
     public Tasks currentTask;
 
     Tasks[] tasks = new Tasks[5];
+
+    public Text taskList;
 
     public enum Tasks
     {
@@ -21,6 +24,7 @@ public class TaskAssigner : MonoBehaviour
     void Start()
     {
         AssignTasks();
+        ResetText();
     }
 
     // Update is called once per frame
@@ -64,10 +68,43 @@ public class TaskAssigner : MonoBehaviour
             currentTask = tasks[0];
 
             Debug.Log("Current Task: " + currentTask);
+
+            ResetText();
         } 
         else
         {
             Debug.Log("All tasks complete!");
+            taskList.text = "All tasks complete!";
+        }
+
+        
+
+    }
+
+    private void ResetText()
+    {
+        Tasks condition = currentTask;
+
+        switch (currentTask)
+        {
+            case Tasks.TurnWheel:
+                taskList.text = "Current Task: Turn the wheel.";
+                break;
+            case Tasks.WashDeck:
+                taskList.text = "Current Task: Wash the deck.";
+                break;
+            case Tasks.Spyglass:
+                taskList.text = "Current Task: Use the spyglass.";
+                break;
+            case Tasks.Dance:
+                taskList.text = "Current Task: Break it down!";
+                break;
+            case Tasks.EatIceCream:
+                taskList.text = "Current Task: Enjoy some ice cream.";
+                break;
+            default:
+                taskList.text = "All tasks complete!";
+                break;
         }
 
     }
