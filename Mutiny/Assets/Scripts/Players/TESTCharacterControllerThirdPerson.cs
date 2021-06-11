@@ -21,6 +21,14 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviour
 
     private Vector3 requestMoveDirection; // direction to move in the next fixed update
 
+    private void Awake()
+    {
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
+
     void Start()
     {
         // For the future, uncomment to remove cursor visibility
@@ -98,7 +106,7 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviour
             sprintAdd = 0f;
         }
 
-        DoMove();
+        //DoMove();
     }
 
     // Checks if the player display needs to flip directions
@@ -115,13 +123,13 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // DoMove();
+        DoMove();
     }
 
     private void DoMove()
     {
         // Move the player
-        Vector3 movement = requestMoveDirection.normalized * (speed + sprintAdd) * Time.deltaTime;
+        Vector3 movement = requestMoveDirection.normalized * (speed + sprintAdd) * Time.fixedDeltaTime;
         controller.Move(movement);
 
         // Update movement for animator
