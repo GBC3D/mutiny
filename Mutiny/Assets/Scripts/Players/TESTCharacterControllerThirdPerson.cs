@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class TESTCharacterControllerThirdPerson : MonoBehaviour
+public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
 {
 
     [SerializeField] public CharacterController controller; // Reference to CharacterController
     [SerializeField] public Transform cam; // Camera transform
     [SerializeField] public Transform displayRef; // Reference to the sprite display transform
     [SerializeField] public Animator animator; // AnimatorController for the character display
+    public GameObject cameraParent; //The parent of the camera gameobject.
 
     [SerializeField] public float speed = 6f; // Normal move speed
     [SerializeField] public float sprintAdd = 1.0f; // Sprint speed addition
@@ -31,6 +33,9 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviour
 
     void Start()
     {
+        //Makes sure that the player has authority of the object using the camera.
+        cameraParent.SetActive(photonView.IsMine);
+
         // For the future, uncomment to remove cursor visibility
         // Cursor.visible = false;
     }
@@ -38,6 +43,12 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checks to see if player has ownership of this controller
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         // Grab forward and size move values
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -123,6 +134,11 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Checks to see if player has ownership of the controller.
+        if (!photonView.IsMine)
+        {
+            return;
+        }
         DoMove();
     }
 

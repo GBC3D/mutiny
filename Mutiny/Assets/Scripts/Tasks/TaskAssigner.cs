@@ -17,7 +17,8 @@ public class TaskAssigner : MonoBehaviour
         WashDeck,
         Spyglass,
         Dance,
-        EatIceCream
+        EatIceCream,
+        CoffeeBreak
     }
 
     // Start is called before the first frame update
