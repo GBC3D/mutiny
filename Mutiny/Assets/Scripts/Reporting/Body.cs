@@ -1,30 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Body : MonoBehaviour
+public class Body : MonoBehaviourPunCallbacks 
 {
     [SerializeField]
     private LayerMask playerMask;
 
     void OnTriggerExit(Collider other)
     {
-        HidePlayers();
+        PhotonView photonView = other.GetComponent<PhotonView>();
+
+        if (photonView != null && photonView.IsMine)
+        {
+            HidePlayers();
+        }
+
     }
 
     void OnTriggerEnter(Collider other)
     {
-        ShowPlayers();
-    }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if (Physics.CheckSphere(gameObject.transform.position, 5f, playerMask))
-    //    {
-    //        ShowPlayers();
-    //  }
-    //}
+        PhotonView photonView = other.GetComponent<PhotonView>();
+
+        if (photonView != null && photonView.IsMine)
+        {
+            ShowPlayers();
+        }
+
+    }
 
     public void ShowPlayers()
     {
@@ -34,11 +39,13 @@ public class Body : MonoBehaviour
             
             if(player.gameObject.GetComponent<PlayerUI>() != null)
             {
+                
                 player.gameObject.GetComponent<PlayerUI>().ShowReport();
             }
         }
     }
 
+    //[PunRPC]
     public void HidePlayers()
     {
         Collider[] players = Physics.OverlapSphere(gameObject.transform.position, 150f);

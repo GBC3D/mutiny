@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class TaskAssigner : MonoBehaviour
+public class TaskAssigner : MonoBehaviourPunCallbacks
 {
     public Tasks currentTask;
 
@@ -24,6 +25,12 @@ public class TaskAssigner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        //taskList = GameObject.Find("Player UI/Task Text").GetComponent<Text>();
         AssignTasks();
         ResetText();
     }
@@ -31,7 +38,7 @@ public class TaskAssigner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && photonView.IsMine)
         {
             CompleteTask();
         }
@@ -39,7 +46,6 @@ public class TaskAssigner : MonoBehaviour
 
     private void AssignTasks()
     {
-
 
         for (int i = 0; i < 5; i++)
         {

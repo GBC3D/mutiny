@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1147718618017826967}
   - component: {fileID: 1147718618017826966}
   - component: {fileID: 1147718618017826965}
-  - component: {fileID: 1147718618017826969}
   - component: {fileID: 1147718618017826970}
   m_Layer: 7
   m_Name: Body (Toggle Mesh Renderer for Body)
@@ -115,22 +114,6 @@ CapsuleCollider:
   m_Height: 119.99577
   m_Direction: 1
   m_Center: {x: 3.2970333, y: -10.084521, z: -0.8202934}
---- !u!114 &1147718618017826969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147718618017826963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 632fd1f7259ab9d4e99c4bcf761e5f0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  report: {fileID: 0}
-  vote: {fileID: 0}
-  tasks: {fileID: 0}
-  reportable: 0
 --- !u!114 &1147718618017826970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +142,7 @@ GameObject:
   - component: {fileID: 1147718619832457176}
   - component: {fileID: 9077896366629106325}
   - component: {fileID: 2987628320917221097}
+  - component: {fileID: 3173228024288063172}
   m_Layer: 7
   m_Name: Pirate(3rdPersonFollow)
   m_TagString: Untagged
@@ -278,6 +262,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &3173228024288063172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147718619832457172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632fd1f7259ab9d4e99c4bcf761e5f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  report: {fileID: 0}
+  vote: {fileID: 0}
+  tasks: {fileID: 0}
+  reportable: 0
 --- !u!1 &1788298735091674270
 GameObject:
   m_ObjectHideFlags: 0
