@@ -15,7 +15,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     //Called as soon as you're connected to the Master server. Calls Join()
     public override void OnConnectedToMaster()
     {
-        Join();
+        //Join();
 
         base.OnConnectedToMaster();
     }
