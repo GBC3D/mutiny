@@ -41,6 +41,9 @@ MonoBehaviour:
   - HidePlayers
   - ShowPlayers
   - StartVote
+  - VoteRPC
+  - EndVote
+  - FixUI
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

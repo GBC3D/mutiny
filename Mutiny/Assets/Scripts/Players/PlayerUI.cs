@@ -20,7 +20,8 @@ public class PlayerUI : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             //report = GameObject.Find("Player UI/Body Report Text").GetComponent<Text>();
-            //vote = GameObject.Find("Player UI/Vote Screen");
+            vote = GameObject.Find("GameManager/Canvas");
+            vote.SetActive(false);
             //tasks = GameObject.Find("Player UI/Task Text").GetComponent<Text>();
 
             //report.gameObject.SetActive(false);
@@ -76,6 +77,11 @@ public class PlayerUI : MonoBehaviourPunCallbacks
         report.gameObject.SetActive(false);
         tasks.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void FixUI()
+    {
+        tasks.gameObject.SetActive(true);
     }
 
 
