@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 6471219055019822458}
   - component: {fileID: 4319487257097061382}
   - component: {fileID: 730756739920949690}
+  - component: {fileID: 1469783025358830841}
   m_Layer: 7
   m_Name: Bobby IG
   m_TagString: Untagged
@@ -845,7 +846,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8802977487161406570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 632fd1f7259ab9d4e99c4bcf761e5f0d, type: 3}
   m_Name: 
@@ -861,7 +862,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8802977487161406570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8cd3efc4ffc9044f8ab440e7b41097c, type: 3}
   m_Name: 
@@ -882,3 +883,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 0}
   votes: 0
+--- !u!114 &1469783025358830841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8802977487161406570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fb442a6a19945ce82f3711d33031c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: 0
+  server: {fileID: 0}

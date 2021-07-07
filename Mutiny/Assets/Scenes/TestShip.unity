@@ -6982,6 +6982,7 @@ GameObject:
   - component: {fileID: 1237562431}
   - component: {fileID: 1237562433}
   - component: {fileID: 1237562432}
+  - component: {fileID: 1237562434}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7021,6 +7022,7 @@ MonoBehaviour:
   totalVotes: 0
   player: Player 1
   theButton: {fileID: 1506645946}
+  players: {fileID: 0}
 --- !u!114 &1237562433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7043,6 +7045,19 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1237562434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237562430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f179f0c6d47f541bbae259ef966b482a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readyPlayers: 0
 --- !u!1 &1238665910
 GameObject:
   m_ObjectHideFlags: 0

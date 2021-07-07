@@ -15,8 +15,32 @@ public class PlayerUI : MonoBehaviourPunCallbacks
     public bool reportable = false;
 
 
-    private void Start()
+    //private void Start()
+    //{
+      //  if (photonView.IsMine)
+        //{
+          //  vote = GameObject.Find("GameManager/Canvas");
+           // vote.SetActive(false);
+        //}
+
+        //if (vote == null)
+          //  Debug.LogError("SomeVariable has not been assigned.", this);
+        // Notice, that we pass 'this' as a context object so that Unity will highlight this object when clicked.
+
+   // }
+
+    private void Awake()
     {
+        if (photonView.IsMine)
+        {
+            //report = GameObject.Find("Player UI/Body Report Text").GetComponent<Text>();
+            //vote = GameObject.Find("Player UI/Vote Screen");
+            //tasks = GameObject.Find("Player UI/Task Text").GetComponent<Text>();
+
+            //report.gameObject.SetActive(false);
+            //vote.gameObject.SetActive(false);
+        }
+
         if (photonView.IsMine)
         {
             //report = GameObject.Find("Player UI/Body Report Text").GetComponent<Text>();
@@ -31,20 +55,6 @@ public class PlayerUI : MonoBehaviourPunCallbacks
         if (vote == null)
             Debug.LogError("SomeVariable has not been assigned.", this);
         // Notice, that we pass 'this' as a context object so that Unity will highlight this object when clicked.
-
-    }
-
-    private void Awake()
-    {
-        if (photonView.IsMine)
-        {
-            //report = GameObject.Find("Player UI/Body Report Text").GetComponent<Text>();
-            //vote = GameObject.Find("Player UI/Vote Screen");
-            //tasks = GameObject.Find("Player UI/Task Text").GetComponent<Text>();
-
-            //report.gameObject.SetActive(false);
-            //vote.gameObject.SetActive(false);
-        }
     }
 
     void Update()
@@ -54,6 +64,7 @@ public class PlayerUI : MonoBehaviourPunCallbacks
             //StartVote();
             //PhotonView view;
             //view = gameObject.transform.parent.gameObject.GetComponent<PhotonView>();
+            Debug.Log("START VOTE");
             photonView.RPC("StartVote", RpcTarget.All);
         }
     }
