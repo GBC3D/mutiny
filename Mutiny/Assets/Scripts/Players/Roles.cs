@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Roles : MonoBehaviour
+public class PlayerRoles : MonoBehaviour
 {
 
-    public enum Role
+    public enum playerRole
     {
         Shipmate,
         Mutineer,
         Captain
     }
 
-    public Role playerRole;
+    public playerRole p_Role;
 
-    private void SetRole(Role role)
+    private void SetPlayerRole(playerRole role)
     {
         int test;
     }

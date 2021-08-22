@@ -21,6 +21,6 @@ public class RoleAssigner : MonoBehaviour
 
         //selectedPlayer.photonView;
 
-        selectedPlayer.GameObject.Get
+        //selectedPlayer.GameObject.Get
     }
 }
