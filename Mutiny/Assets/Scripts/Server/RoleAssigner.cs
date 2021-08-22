@@ -5,15 +5,22 @@ using Photon.Pun;
 
 public class RoleAssigner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void AssignRoles()
+    {
+        int range = PhotonNetwork.PlayerList.Length;
+        int result = Random.Range(1, range);
+
+        Photon.Realtime.Player selectedPlayer = PhotonNetwork.PlayerList[result];
+
+        //selectedPlayer.photonView;
+
+        selectedPlayer.GameObject.Get
     }
 }
