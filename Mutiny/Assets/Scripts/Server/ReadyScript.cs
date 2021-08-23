@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ReadyScript : MonoBehaviour
+public class ReadyScript : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private bool ready = false;
@@ -19,12 +20,26 @@ public class ReadyScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !ready)
         {
             ready = true;
-            server.readyPlayers += 1;
+            photonView.RPC("ReadyUp", RpcTarget.MasterClient);
         }
         else if (Input.GetKeyDown(KeyCode.E) && ready)
         {
             ready = false;
-            server.readyPlayers -= 1;
+            photonView.RPC("UnReadyUp", RpcTarget.MasterClient);
         }
     }
+
+    //[PunRPC]
+    //private void ReadyUp()
+    //{
+        //server.readyPlayers += 1;
+      //  server.ReceiveReady();
+    //} 
+
+    //[PunRPC]
+    //private void UnReadyUp()
+    //{
+        //server.readyPlayers -= 1;
+      //  server.ReceiveUnready();
+    //}
 }

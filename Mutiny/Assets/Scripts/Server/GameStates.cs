@@ -9,7 +9,7 @@ public class GameStates : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        Debug.Log("Ready Players = " + readyPlayers.ToString() + " Connected Players = " + PhotonNetwork.CurrentRoom.PlayerCount.ToString());
+        //Debug.Log("Ready Players = " + readyPlayers.ToString() + " Connected Players = " + PhotonNetwork.CurrentRoom.PlayerCount.ToString());
 
         if (readyPlayers == PhotonNetwork.CurrentRoom.PlayerCount)
         {
@@ -38,4 +38,14 @@ public class GameStates : MonoBehaviourPunCallbacks
             }
         }
     }
+
+    //public void ReceiveReady()
+    //{
+      //  readyPlayers += 1;
+    //}
+
+ //  public void ReceiveUnready()
+  //  {
+    //    readyPlayers -= 1;
+    //}
 }
