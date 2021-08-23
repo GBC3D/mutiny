@@ -18,6 +18,9 @@ public class GameStates : MonoBehaviourPunCallbacks
     [SerializeField]
     private VideoPlayer player;
 
+    [SerializeField]
+    private GameObject telePosition;
+
     private void Awake()
     {
         playersText.text = "Ready players: 0/" + PhotonNetwork.CurrentRoom.PlayerCount;
@@ -54,9 +57,12 @@ public class GameStates : MonoBehaviourPunCallbacks
                 playerPrefabObject.GetComponent<PlayerUI>().enabled = true;
                 playerPrefabObject.GetComponent<TaskAssigner>().enabled = true;
                 Debug.Log("FORTNITE MAN IT WORKS OR SOMETHING");
+                playerPrefabObject.transform.position = telePosition.transform.position;
 
             }
         }
+
+
     }
 
     //public void ReceiveReady()
