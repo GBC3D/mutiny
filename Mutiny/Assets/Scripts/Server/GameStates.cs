@@ -2,10 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class GameStates : MonoBehaviourPunCallbacks
 {
     public int readyPlayers = 0;
+
+    [SerializeField]
+    private Canvas canvas;
+
+    [SerializeField]
+    private Text playersText;
+
+    private void Awake()
+    {
+        playersText.text = "Ready players: 0/" + PhotonNetwork.CurrentRoom.PlayerCount;
+    }
 
     private void Update()
     {
@@ -18,12 +30,15 @@ public class GameStates : MonoBehaviourPunCallbacks
             photonView.RPC("StartGame", RpcTarget.All);
 
         }
+
+        playersText.text = "Ready players: " + readyPlayers + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
     }
 
     [PunRPC]
     public void StartGame()
     {
         Debug.Log("GAME STARTED!");
+        canvas.gameObject.SetActive(false);
         var photonViews = UnityEngine.Object.FindObjectsOfType<PhotonView>();
         foreach (var view in photonViews)
         {

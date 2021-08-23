@@ -38,11 +38,13 @@ public class ReadyHandler : MonoBehaviourPunCallbacks
     public void ReceiveReady()
     {
       server.readyPlayers += 1;
+      //server.playersText.text = "Ready players: " + server.readyPlayers + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
     }
 
     [PunRPC]
     public void ReceiveUnready()
     {
       server.readyPlayers -= 1;
+      //server.playersText.text = "Ready players: " + server.readyPlayers + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
     }
 }
