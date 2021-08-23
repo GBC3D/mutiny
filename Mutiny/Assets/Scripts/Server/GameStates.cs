@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class GameStates : MonoBehaviourPunCallbacks
 {
@@ -13,6 +14,9 @@ public class GameStates : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private Text playersText;
+
+    [SerializeField]
+    private VideoPlayer player;
 
     private void Awake()
     {
@@ -39,6 +43,7 @@ public class GameStates : MonoBehaviourPunCallbacks
     {
         Debug.Log("GAME STARTED!");
         canvas.gameObject.SetActive(false);
+        player.Play();
         var photonViews = UnityEngine.Object.FindObjectsOfType<PhotonView>();
         foreach (var view in photonViews)
         {
