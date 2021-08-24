@@ -9,6 +9,8 @@ public class GameStates : MonoBehaviourPunCallbacks
 {
     public int readyPlayers = 0;
 
+    private int spawner = 0;
+
     [SerializeField]
     private Canvas canvas;
 
@@ -20,6 +22,9 @@ public class GameStates : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private GameObject telePosition;
+
+    [SerializeField]
+    private Transform[] spawns;
 
     private void Awake()
     {
@@ -57,12 +62,16 @@ public class GameStates : MonoBehaviourPunCallbacks
                 playerPrefabObject.GetComponent<PlayerUI>().enabled = true;
                 playerPrefabObject.GetComponent<TaskAssigner>().enabled = true;
                 Debug.Log("FORTNITE MAN IT WORKS OR SOMETHING");
-                playerPrefabObject.transform.position = telePosition.transform.position;
+                playerPrefabObject.GetComponent<CharacterController>().enabled = false; //remove this and the other one below if it's a probelm
+                playerPrefabObject.transform.position = telePosition.gameObject.transform.position;
+                playerPrefabObject.GetComponent<CharacterController>().enabled = true;
+
+                //spawner += 1;
 
             }
         }
 
-
+        //spawner = 0;
     }
 
     //public void ReceiveReady()
