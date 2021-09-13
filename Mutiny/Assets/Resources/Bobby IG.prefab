@@ -720,6 +720,8 @@ GameObject:
   - component: {fileID: 730756739920949690}
   - component: {fileID: 1469783025358830841}
   - component: {fileID: 4030214702448038308}
+  - component: {fileID: 4263016614979090390}
+  - component: {fileID: 9165950865366446072}
   m_Layer: 7
   m_Name: Bobby IG
   m_TagString: Untagged
@@ -908,5 +910,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c96fe8169a4e4ad2adb65cd6b1d0fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4263016614979090390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8802977487161406570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a04b236ab331a2f4db50243bee02139a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideControllers:
+  - {fileID: 22100000, guid: 0ebbab8e267271e4fa385cef085afb52, type: 2}
+  - {fileID: 22100000, guid: 80e3f035f04494142aa25214cde7be8c, type: 2}
+  overrider: {fileID: 9165950865366446072}
+--- !u!114 &9165950865366446072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8802977487161406570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63fee71536256b4596bb38476f41de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
