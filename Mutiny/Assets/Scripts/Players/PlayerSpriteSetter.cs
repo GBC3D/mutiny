@@ -6,10 +6,11 @@ public class PlayerSpriteSetter : MonoBehaviour
 {
     [SerializeField] private AnimatorOverrideController[] overrideControllers;
     [SerializeField] private AnimatorOverrider overrider;
+    [SerializeField] private int defaultSkinIndex;
 
     private void Start()
     {
-        Set(1);
+        Set(defaultSkinIndex);
     }
 
     public void Set(int i)
