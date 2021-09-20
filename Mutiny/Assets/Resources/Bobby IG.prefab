@@ -924,9 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04b236ab331a2f4db50243bee02139a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideControllers:
-  - {fileID: 22100000, guid: 80e3f035f04494142aa25214cde7be8c, type: 2}
-  - {fileID: 22100000, guid: 0ebbab8e267271e4fa385cef085afb52, type: 2}
+  skinCollection: {fileID: 0}
   overrider: {fileID: 9165950865366446072}
   defaultSkinIndex: 0
 --- !u!114 &9165950865366446072

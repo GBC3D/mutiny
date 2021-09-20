@@ -15,6 +15,9 @@ public class GameStates : MonoBehaviourPunCallbacks
     private Canvas canvas;
 
     [SerializeField]
+    private Canvas skinCanvas;
+
+    [SerializeField]
     private Text playersText;
 
     [SerializeField]
@@ -51,6 +54,7 @@ public class GameStates : MonoBehaviourPunCallbacks
     {
         Debug.Log("GAME STARTED!");
         canvas.gameObject.SetActive(false);
+        skinCanvas.gameObject.SetActive(false);
         player.Play();
         var photonViews = UnityEngine.Object.FindObjectsOfType<PhotonView>();
         foreach (var view in photonViews)
