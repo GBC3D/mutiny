@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class PlayerSpriteSetter : MonoBehaviour
 {
-    [SerializeField] private SkinCollection skinCollection;
+    [SerializeField] public SkinCollection skinCollection;
     [SerializeField] private AnimatorOverrider overrider;
     [SerializeField] private int defaultSkinIndex;
+    [SerializeField] Animator animator;
+
+    private void Awake()
+    {
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
 
     private void Start()
     {
@@ -30,14 +39,16 @@ public class PlayerSpriteSetter : MonoBehaviour
             Debug.LogError("Override Controllers array is empty.");
             return;
         }
-        overrider.SetAnimations(skinCollection.skins[i].skin);
+        overrider.SetAnimations(skinCollection.skins[i].skin, i);
     }
 
-    public void Set(AnimatorOverrideController animatorOverrideController)
+    public void Set(AnimatorOverrideController animatorOverrideController, int skinIndex)
     {
         if (animatorOverrideController != null)
         {
-            overrider.SetAnimations(animatorOverrideController);
+            overrider.SetAnimations(animatorOverrideController, skinIndex);
+            if (animator.GetInteger("EquipSkin") != skinIndex)
+                animator.SetInteger("EquipSkin", skinIndex);
         } else
         {
             Debug.LogError("Error -trying to set null skin");

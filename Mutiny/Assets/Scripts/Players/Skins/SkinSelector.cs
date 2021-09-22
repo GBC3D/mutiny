@@ -23,13 +23,14 @@ public class SkinSelector : MonoBehaviour
                 return;
 
             playerSpriteSetter = _playerSpriteSetter;
+            skinCollection = playerSpriteSetter.skinCollection;
 
             SkinSelectionCreator newSkinSelect; // create instance of SkinSelectionCreator
 
-            foreach (PlayerSkin skin in skinCollection.skins)
+            for (int i = 0; i < skinCollection.skins.Count; i++)
             {
                 newSkinSelect = Instantiate(skinSelectionPrefab, contentHolder).GetComponent<SkinSelectionCreator>();
-                newSkinSelect.Setup(skin, playerSpriteSetter);
+                newSkinSelect.Setup(skinCollection.skins[i], playerSpriteSetter, i);
             }
         }
         

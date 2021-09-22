@@ -8,6 +8,7 @@ public class SkinSelectionCreator : MonoBehaviour
 {
     public Text skinName;
     public Image skinImage;
+    public int skinIndex;
 
     public PlayerSkin skin;
 
@@ -21,11 +22,12 @@ public class SkinSelectionCreator : MonoBehaviour
             skinImage = GetComponentInChildren<Image>();
     }
 
-    public void Setup(PlayerSkin newSkin, PlayerSpriteSetter _playerSpriteSetter)
+    public void Setup(PlayerSkin newSkin, PlayerSpriteSetter _playerSpriteSetter, int _skinIndex)
     {
         skin = newSkin;
         skinImage.sprite = skin.showcaseImage;
         skinName.text = skin.skinName;
+        skinIndex = _skinIndex;
 
         playerSpriteSetter = _playerSpriteSetter;
     }
@@ -33,6 +35,6 @@ public class SkinSelectionCreator : MonoBehaviour
     public void SelectSkin()
     {
         if (playerSpriteSetter) 
-            playerSpriteSetter.Set(skin.skin);
+            playerSpriteSetter.Set(skin.skin, skinIndex);
     }
 }

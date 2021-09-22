@@ -11,6 +11,8 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
     [SerializeField] public Transform displayRef; // Reference to the sprite display transform
     [SerializeField] public Animator animator; // AnimatorController for the character display
     public GameObject cameraParent; //The parent of the camera gameobject.
+    [SerializeField] public AnimatorOverrider animatorOverrider; // Reference to the animator overrider
+    [SerializeField] public PlayerSpriteSetter playerSpriteSetter; // Reference to the player sprite setter
 
     [SerializeField] public float speed = 6f; // Normal move speed
     [SerializeField] public float sprintAdd = 1.0f; // Sprint speed addition
@@ -23,11 +25,17 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
 
     private Vector3 requestMoveDirection; // direction to move in the next fixed update
 
+    private int equipSkin = 0; // the skin index of the currently equipped skin
+
     private void Awake()
     {
         if (animator == null)
         {
             animator = GetComponent<Animator>();
+        }
+        if (animatorOverrider == null)
+        {
+            animatorOverrider = GetComponent<AnimatorOverrider>();
         }
     }
 
@@ -46,12 +54,17 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
         //Checks to see if player has ownership of this controller
         if (!photonView.IsMine)
         {
+            CheckFlip(animator.GetFloat("HorizontalInput"));
+            CheckEquipSkin();
             return;
         }
 
         // Grab forward and size move values
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
+        // Store the horizontal input into the synced animator
+        animator.SetFloat("HorizontalInput", horizontal);
 
         // store in direction
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -150,7 +163,9 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
 
         // Update movement for animator
         if (animator != null)
+        {
             animator.SetFloat("MoveSpeed", movement.magnitude);
+        }
     }
 
     // Flip the player display
@@ -161,5 +176,15 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
         Vector3 localScale = displayRef.transform.localScale;
         localScale.x *= -1;
         displayRef.transform.localScale = localScale;
+    }
+
+    private void CheckEquipSkin()
+    {
+        int nowEquip = animator.GetInteger("EquipSkin");
+        if (nowEquip != equipSkin)
+        {
+            animatorOverrider.SetAnimations(playerSpriteSetter.skinCollection.skins[nowEquip].skin, nowEquip);
+            equipSkin = nowEquip;
+        }
     }
 }
