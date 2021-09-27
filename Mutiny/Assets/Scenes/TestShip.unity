@@ -8111,7 +8111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyPlayers: 0
   canvas: {fileID: 2069039416}
-  skinCanvas: {fileID: 0}
+  skinCanvas: {fileID: 478832958}
   playersText: {fileID: 340924680}
   player: {fileID: 1808928299}
   telePosition: {fileID: 1058195210}
