@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ResolutionChanger : MonoBehaviour
 {
-
+    //Changes the resolution based on the valuein the dropdown box
     public void ChangeResolution()
     {
         int i = GetComponent<Dropdown>().value;
