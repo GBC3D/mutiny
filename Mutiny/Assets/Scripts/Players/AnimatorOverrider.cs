@@ -11,8 +11,10 @@ public class AnimatorOverrider : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void SetAnimations(AnimatorOverrideController overrideController)
+    public void SetAnimations(AnimatorOverrideController overrideController, int skinIndex)
     {
         _animator.runtimeAnimatorController = overrideController;
+        if (_animator.GetInteger("EquipSkin") != skinIndex)
+            _animator.SetInteger("EquipSkin", skinIndex);
     }
 }
