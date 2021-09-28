@@ -54,4 +54,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestShip.unity
     guid: 7c88ab44bf74f8d4bb6a6b72ec0c133f
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 47fa407789527554a9b62caed693000b
+  - enabled: 1
+    path: Assets/Scenes/Settings Menu.unity
+    guid: d26e5b09bd7d48a4496556403b824bb8
   m_configObjects: {}
