@@ -17,6 +17,13 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
     [SerializeField] public float speed = 6f; // Normal move speed
     [SerializeField] public float sprintAdd = 1.0f; // Sprint speed addition
 
+    [SerializeField] public MasterControls controls;
+
+    // These variables are to keep track of inputs
+    private float horizontalInput;
+    private float verticalInput;
+    private bool requestInteractInput;
+
     // Bool for facing right with a get property
     private bool facingRight = false;
     public bool FacingRight { get { return facingRight; } }
@@ -44,6 +51,18 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
         //Makes sure that the player has authority of the object using the camera.
         cameraParent.SetActive(photonView.IsMine);
 
+        if (photonView.IsMine)
+        {
+            Debug.Log("Adding MasterControls to player");
+            controls = new MasterControls();
+
+            controls.Player.Motion.performed += ctxt => { Vector2 vec = ctxt.ReadValue<Vector2>(); horizontalInput = vec.x; verticalInput = vec.y; Debug.LogError("Moving"); };
+            controls.Player.Motion.canceled += ctxt => { horizontalInput = 0; verticalInput = 0; };
+
+            controls.Player.Interact.started += ctxt => { requestInteractInput = true; Debug.LogError("Interacting"); };
+            Debug.Log("Done adding master controls");
+        }
+
         // For the future, uncomment to remove cursor visibility
         // Cursor.visible = false;
     }
@@ -60,24 +79,24 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
         }
 
         // Grab forward and size move values
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        // float horizontal = Input.GetAxisRaw("Horizontal");
+        // float vertical = Input.GetAxisRaw("Vertical");
 
         // Store the horizontal input into the synced animator
-        animator.SetFloat("HorizontalInput", horizontal);
+        animator.SetFloat("HorizontalInput", horizontalInput);
 
         // store in direction
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
 
         CheckMove(direction);
-        CheckFlip(horizontal);
+        CheckFlip(horizontalInput);
 
         if (animator != null)
         {
-            if (vertical > 0)
+            if (verticalInput > 0)
             {
-                if (horizontal != 0)
+                if (horizontalInput != 0)
                 {
                     animator.SetInteger("MoveDirection", 1);
                 }
@@ -85,9 +104,9 @@ public class TESTCharacterControllerThirdPerson : MonoBehaviourPunCallbacks
                 {
                     animator.SetInteger("MoveDirection", 2);
                 }
-            } else if (vertical < 0)
+            } else if (verticalInput < 0)
             {
-                if (horizontal != 0)
+                if (horizontalInput != 0)
                 {
                     animator.SetInteger("MoveDirection", -1);
                 } else
