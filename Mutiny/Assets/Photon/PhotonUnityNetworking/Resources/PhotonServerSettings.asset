@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AppSettings:
     AppIdRealtime: 1f051a48-5147-4438-81de-e4d33d383a46
-    AppIdChat: 
+    AppIdChat: f9ddb7a8-f2e0-4080-8c97-4e2682e39f3f
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: us
+  DevRegion: cae
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
@@ -45,6 +45,8 @@ MonoBehaviour:
   - StartGame
   - StartVote
   - VoteRPC
+  - SendMessage
+  - ReceiveMessage
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
   DevRegionSetOnce: 1
